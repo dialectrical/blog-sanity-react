@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import sanityClient from "../client.js";
+import { NavBar } from "./NavBar";
 import BlockContent from "@sanity/block-content-to-react";
 import imageUrlBuilder from "@sanity/image-url";
+import { Container, Row, Col, Spinner } from "reactstrap";
 
 const builder = imageUrlBuilder(sanityClient);
 function urlFor(source) {
@@ -35,35 +37,43 @@ export default function OnePost() {
       .catch(console.error);
   }, [slug]);
 
-  if (!postData) return <div>Loading...</div>;
+  if (!postData)
+    return (
+      <Container className="themed-container" fluid="sm">
+        <Row>
+          <Col>
+            <NavBar />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Spinner />
+          </Col>
+        </Row>
+      </Container>
+    );
 
   return (
-    <div>
-      <div>
-        <h2>{postData.title}</h2>
-        <div>
-          <img
-            src={urlFor(postData.authorImage)
-              .width(100)
-              .url()}
-            alt="alt"
+    <Container className="themed-container" fluid="sm">
+      <Row>
+        <Col>
+          <NavBar />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <h2>{postData.title}</h2>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <BlockContent
+            blocks={postData.body}
+            projectId={sanityClient.clientConfig.projectID}
+            dataset={sanityClient.clientConfig.dataset}
           />
-          <h4>{postData.name}</h4>
-        </div>
-      </div>
-      <img
-        src={urlFor(postData.mainImage)
-          .width(200)
-          .url()}
-        alt=""
-      />
-      <div>
-        <BlockContent
-          blocks={postData.body}
-          projectId={sanityClient.clientConfig.projectID}
-          dataset={sanityClient.clientConfig.dataset}
-        />
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
