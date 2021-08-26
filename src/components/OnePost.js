@@ -38,8 +38,8 @@ export default function OnePost() {
 
   if (!postData)
     return (
-      <Container>
-        <Spinner />
+      <Container style={{ padding: "10% 50% 50% 50%" }}>
+        <Spinner children="" />
       </Container>
     );
 

@@ -22,8 +22,8 @@ export default function Archive() {
 
   if (!allPostsData)
     return (
-      <Container>
-        <Spinner />
+      <Container style={{ padding: "10% 50% 50% 50%" }}>
+        <Spinner children="" />
       </Container>
     );
 
