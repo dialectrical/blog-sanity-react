@@ -37,7 +37,14 @@ export default function AllPosts() {
         body
         }`
       )
-      .then(data => setAllPosts(data))
+      .then(data =>
+        setAllPosts(
+          data.sort(function(a, b) {
+            console.log(a.publishedAt);
+            return Date.parse(b.publishedAt) - Date.parse(a.publishedAt);
+          })
+        )
+      )
       .catch(console.error);
   }, []);
 
