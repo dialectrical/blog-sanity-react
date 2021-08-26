@@ -1,7 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../client.js";
-import { Jumbotron, Container, Row, Col, Table } from "reactstrap";
+import BlockContent from "@sanity/block-content-to-react";
+import {
+  Jumbotron,
+  Container,
+  Row,
+  Col,
+  Table,
+  Card,
+  CardDeck,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button
+} from "reactstrap";
 
 export default function AllPosts() {
   const [allPostsData, setAllPosts] = useState(null);
@@ -18,7 +33,8 @@ export default function AllPosts() {
               _id,
               url
             }
-          }
+          },
+        body
         }`
       )
       .then(data => setAllPosts(data))
@@ -40,30 +56,36 @@ export default function AllPosts() {
               Reactstrap for the layout. I don't like blogging.
             </p>
           </Jumbotron>
-          <Table striped hover bordered>
-            <thead>
-              <tr>
-                <th>Recent posts</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allPostsData &&
-                allPostsData.map((post, index) => (
-                  <tr>
-                    <td>
-                      <Link
-                        to={"/" + post.slug.current}
-                        key={post.slug.current}
-                      >
-                        <span key={index}>📄 {post.title}</span>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
         </Col>
       </Row>
+      <CardDeck>
+        {allPostsData &&
+          allPostsData.map((post, index) => (
+            <Card
+              style={{
+                marginBottom: "2%"
+              }}
+            >
+              <CardBody>
+                <CardTitle>
+                  <h3 key={index}>{post.title} 📄</h3>
+                </CardTitle>
+                <CardText>
+                  <BlockContent
+                    blocks={post.body.slice(0, 2)}
+                    projectId={sanityClient.clientConfig.projectID}
+                    dataset={sanityClient.clientConfig.dataset}
+                  />
+                </CardText>
+                <CardText style={{ textAlign: "right" }}>
+                  <Link to={"/" + post.slug.current} key={post.slug.current}>
+                    Read more
+                  </Link>
+                </CardText>
+              </CardBody>
+            </Card>
+          ))}
+      </CardDeck>
     </Container>
   );
 }
