@@ -50,8 +50,6 @@ export default function AllPosts() {
       .catch(console.error);
   }, []);
 
-  console.log(allPostsData);
-
   return (
     <Container className="themed-container" fluid="sm">
       <Row>
