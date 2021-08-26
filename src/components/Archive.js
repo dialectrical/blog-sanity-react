@@ -12,14 +12,9 @@ export default function Archive() {
         `*[_type == "post"]{
           title,
           slug,
-          publishedAt,
-          mainImage{
-            asset->{
-              _id,
-              url
+          publishedAt
             }
           }
-          body
         }`
       )
       .then(data => setAllPosts(data))
