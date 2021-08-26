@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../client.js";
+import { Timestamp } from "./Timestamper.js";
 import BlockContent from "@sanity/block-content-to-react";
 import {
   Jumbotron,
@@ -34,7 +35,8 @@ export default function AllPosts() {
               url
             }
           },
-        body
+        body,
+        publishedAt
         }`
       )
       .then(data =>
@@ -74,9 +76,22 @@ export default function AllPosts() {
               }}
             >
               <CardBody>
-                <CardTitle>
-                  <h3 key={index}>{post.title} 📄</h3>
-                </CardTitle>
+                <Row>
+                  <Col>
+                    <CardTitle tag="h5" key={index}>
+                      {post.title} 📄
+                    </CardTitle>
+                  </Col>
+                  <Col>
+                    <CardSubtitle
+                      tag="h6"
+                      className="text-muted"
+                      style={{ textAlign: "right" }}
+                    >
+                      {Timestamp(post.publishedAt)}
+                    </CardSubtitle>
+                  </Col>
+                </Row>
                 <CardText>
                   <BlockContent
                     blocks={post.body.slice(0, 2)}

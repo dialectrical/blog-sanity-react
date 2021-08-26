@@ -38,7 +38,7 @@ export const ArchiveSort = () => {
                   <span key={index}>📄 {post.title}</span>{" "}
                 </Link>
               </td>
-              <td style={{ textAlign: "right" }}>
+              <td className="text-muted" style={{ textAlign: "right" }}>
                 {Timestamp(post.publishedAt)}
               </td>
             </tr>
