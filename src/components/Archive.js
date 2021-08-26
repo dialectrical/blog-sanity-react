@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../client.js";
-import { NavBar } from "./NavBar";
 import { Jumbotron, Container, Row, Col, Table } from "reactstrap";
 
 export default function Archive() {
