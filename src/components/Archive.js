@@ -13,13 +13,13 @@ export default function Archive() {
           title,
           slug,
           publishedAt
-            }
-          }
         }`
       )
       .then(data => setAllPosts(data))
       .catch(console.error);
   }, []);
+
+  if (!allPostsData) return <Container>woops</Container>;
 
   return (
     <Container className="themed-container" fluid="sm">
