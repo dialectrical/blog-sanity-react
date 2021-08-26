@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 import sanityClient from "../client.js";
+import { Timestamp } from "./Timestamper.js";
 
 export const ArchiveSort = () => {
   const [allPostsData, setAllPosts] = useState(null);
@@ -26,8 +27,6 @@ export const ArchiveSort = () => {
       .catch(console.error);
   }, []);
 
-  console.log(allPostsData);
-
   return (
     <Table striped hover>
       <tbody>
@@ -39,7 +38,9 @@ export const ArchiveSort = () => {
                   <span key={index}>📄 {post.title}</span>{" "}
                 </Link>
               </td>
-              <td style={{ textAlign: "right" }}>{post.publishedAt}</td>
+              <td style={{ textAlign: "right" }}>
+                {Timestamp(post.publishedAt)}
+              </td>
             </tr>
           ))}
       </tbody>
