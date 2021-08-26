@@ -39,40 +39,30 @@ export default function OnePost() {
 
   if (!postData)
     return (
-      <Container className="themed-container" fluid="sm">
-        <Row>
-          <Col>
-            <NavBar />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Spinner />
-          </Col>
-        </Row>
-      </Container>
+      <Row>
+        <Col>
+          <Spinner />
+        </Col>
+      </Row>
     );
 
   return (
     <Container className="themed-container" fluid="sm">
       <Row>
-        <Col>
-          <NavBar />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>{postData.title}</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <BlockContent
-            blocks={postData.body}
-            projectId={sanityClient.clientConfig.projectID}
-            dataset={sanityClient.clientConfig.dataset}
-          />
-        </Col>
+        <Row>
+          <Col>
+            <h2>{postData.title}</h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <BlockContent
+              blocks={postData.body}
+              projectId={sanityClient.clientConfig.projectID}
+              dataset={sanityClient.clientConfig.dataset}
+            />
+          </Col>
+        </Row>
       </Row>
     </Container>
   );
