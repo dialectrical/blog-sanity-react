@@ -26,9 +26,7 @@ export default function OnePost() {
               url
             }
           },
-        body,
-        "name": author->name,
-        "authorImage": author->image
+        body
       }`,
         { slug }
       )
