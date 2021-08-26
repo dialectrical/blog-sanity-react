@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import sanityClient from "../client.js";
+import { Timestamp } from "./Timestamper.js";
 import BlockContent from "@sanity/block-content-to-react";
 import imageUrlBuilder from "@sanity/image-url";
 import { Container, Row, Col, Spinner } from "reactstrap";
@@ -26,7 +27,8 @@ export default function OnePost() {
               url
             }
           },
-        body
+        body,
+        publishedAt
       }`,
         { slug }
       )
@@ -48,6 +50,9 @@ export default function OnePost() {
           <Col>
             <h2>{postData.title}</h2>
           </Col>
+        </Row>
+        <Row>
+          <p className="text-muted">{Timestamp(postData.publishedAt)}</p>
         </Row>
         <Row>
           <Col>
