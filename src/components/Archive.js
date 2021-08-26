@@ -19,6 +19,7 @@ export default function Archive() {
               url
             }
           }
+          body
         }`
       )
       .then(data => setAllPosts(data))
