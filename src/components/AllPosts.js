@@ -83,7 +83,11 @@ export default function AllPosts() {
                     </CardTitle>
                   </Col>
                   <Col>
-                    <CardSubtitle tag="h6" style={{ textAlign: "right" }}>
+                    <CardSubtitle
+                      tag="h6"
+                      className="text-muted"
+                      style={{ textAlign: "right" }}
+                    >
                       {Timestamp(post.publishedAt)}
                     </CardSubtitle>
                   </Col>
