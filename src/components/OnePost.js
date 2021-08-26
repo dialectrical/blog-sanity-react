@@ -26,9 +26,7 @@ export default function OnePost() {
               url
             }
           },
-        body,
-        "name": author->name,
-        "authorImage": author->image
+        body
       }`,
         { slug }
       )
@@ -38,11 +36,9 @@ export default function OnePost() {
 
   if (!postData)
     return (
-      <Row>
-        <Col>
-          <Spinner />
-        </Col>
-      </Row>
+      <Container>
+        <Spinner />
+      </Container>
     );
 
   return (
