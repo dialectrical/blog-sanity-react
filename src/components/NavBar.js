@@ -3,8 +3,13 @@ import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 
 export const NavBar = () => {
   return (
-    <Navbar color="light" expanded="md">
+    <Navbar color="light" light expanded="md">
       <NavbarBrand href="/">Blog</NavbarBrand>
+      <Nav className="mr-auto" inNavbar>
+        <NavItem>
+          <NavLink href="/archive">Archive</NavLink>
+        </NavItem>
+      </Nav>
     </Navbar>
   );
 };
