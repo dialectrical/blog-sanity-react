@@ -30,11 +30,6 @@ export default function Archive() {
     <Container className="themed-container" fluid="sm">
       <Row>
         <Col>
-          <NavBar />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
           <Container fluid>
             <h1 className="display-3">🗄️ Archive</h1>
           </Container>

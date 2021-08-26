@@ -32,11 +32,6 @@ export default function AllPosts() {
     <Container className="themed-container" fluid="sm">
       <Row>
         <Col>
-          <NavBar />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
           <Jumbotron fluid>
             <Container fluid>
               <h1 className="display-3">&#128075; Hello.</h1>
