@@ -78,8 +78,13 @@ export default function AllPosts() {
                   />
                 </CardText>
                 <CardText style={{ textAlign: "right" }}>
-                  <Link to={"/" + post.slug.current} key={post.slug.current}>
-                    Read more
+                  <Link
+                    to={"/" + post.slug.current}
+                    key={post.slug.current}
+                    style={{ color: "white" }}
+                  >
+                    {" "}
+                    <Button color="dark">Read more</Button>
                   </Link>
                 </CardText>
               </CardBody>

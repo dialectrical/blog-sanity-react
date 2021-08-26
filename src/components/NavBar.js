@@ -5,7 +5,7 @@ export const NavBar = () => {
   return (
     <Navbar color="dark" dark expanded="md">
       <NavbarBrand href="/">dialectrical's blog</NavbarBrand>
-      <Nav className="mr-auto" inNavbar>
+      <Nav className="mr-auto" navbar>
         <NavItem>
           <NavLink href="/archive">Archive</NavLink>
         </NavItem>
