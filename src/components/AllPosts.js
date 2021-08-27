@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../client.js";
 import { Timestamp } from "./Timestamper.js";
+import Emojify from "./CategoryEmojifier.js";
 import BlockContent from "@sanity/block-content-to-react";
 import {
   Jumbotron,
@@ -34,6 +35,9 @@ export default function AllPosts() {
               _id,
               url
             }
+          },
+          categories[0] -> {
+            title
           },
         body,
         publishedAt
@@ -77,7 +81,8 @@ export default function AllPosts() {
                 <Row>
                   <Col>
                     <CardTitle tag="h5" key={index}>
-                      {post.title} 📄
+                      {Emojify(post.categories)}
+                      {post.title}
                     </CardTitle>
                   </Col>
                   <Col>
