@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../client.js";
+import { Timestamp } from "./Timestamper.js";
+import Emojify from "./CategoryEmojifier.js";
 import BlockContent from "@sanity/block-content-to-react";
 import {
   Jumbotron,
@@ -34,14 +36,23 @@ export default function AllPosts() {
               url
             }
           },
-        body
+          categories[0] -> {
+            title
+          },
+        body,
+        publishedAt
         }`
       )
-      .then(data => setAllPosts(data))
+      .then(data =>
+        setAllPosts(
+          data.sort(function(a, b) {
+            console.log(a.publishedAt);
+            return Date.parse(b.publishedAt) - Date.parse(a.publishedAt);
+          })
+        )
+      )
       .catch(console.error);
   }, []);
-
-  console.log(allPostsData);
 
   return (
     <Container className="themed-container" fluid="sm">
@@ -67,9 +78,23 @@ export default function AllPosts() {
               }}
             >
               <CardBody>
-                <CardTitle>
-                  <h3 key={index}>{post.title} 📄</h3>
-                </CardTitle>
+                <Row>
+                  <Col>
+                    <CardTitle tag="h5" key={index}>
+                      {Emojify(post.categories)}
+                      {post.title}
+                    </CardTitle>
+                  </Col>
+                  <Col>
+                    <CardSubtitle
+                      tag="h6"
+                      className="text-muted"
+                      style={{ textAlign: "right" }}
+                    >
+                      {Timestamp(post.publishedAt)}
+                    </CardSubtitle>
+                  </Col>
+                </Row>
                 <CardText>
                   <BlockContent
                     blocks={post.body.slice(0, 2)}
