@@ -1,6 +1,6 @@
 {
   "name": "blog-sanity-react",
-  "homepage": "https://dialectrical.github.io/blog-sanity-react/index.html",
+  "homepage": ".",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
