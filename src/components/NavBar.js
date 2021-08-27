@@ -7,10 +7,10 @@ export const NavBar = () => {
       <NavbarBrand href="/">dialectrical's blog</NavbarBrand>
       <Nav className="mr-auto" navbar>
         <NavItem>
-          <NavLink href="/about-me">About</NavLink>
+          <NavLink href="#/about-me">About</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="/archive">Archive</NavLink>
+          <NavLink href="#/archive">Archive</NavLink>
         </NavItem>
       </Nav>
     </Navbar>
