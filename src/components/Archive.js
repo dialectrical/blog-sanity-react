@@ -13,7 +13,7 @@ export default function Archive() {
         `*[_type == "post"]{
           title,
           slug,
-          publishedAt
+          publishedAt,
         }`
       )
       .then(data => setAllPosts(data))

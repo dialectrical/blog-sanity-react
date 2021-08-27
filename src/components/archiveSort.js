@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 import sanityClient from "../client.js";
 import { Timestamp } from "./Timestamper.js";
+import Emojify from "./CategoryEmojifier.js";
 
 export const ArchiveSort = () => {
   const [allPostsData, setAllPosts] = useState(null);
@@ -13,13 +14,15 @@ export const ArchiveSort = () => {
         `*[_type == "post"]{
           title,
           slug,
-          publishedAt
+          publishedAt,
+          categories[0] -> {
+            title
+          }
         }`
       )
       .then(data =>
         setAllPosts(
           data.sort(function(a, b) {
-            console.log(a.publishedAt);
             return Date.parse(b.publishedAt) - Date.parse(a.publishedAt);
           })
         )
@@ -35,7 +38,10 @@ export const ArchiveSort = () => {
             <tr>
               <td>
                 <Link to={"/" + post.slug.current} key={post.slug.current}>
-                  <span key={index}>📄 {post.title}</span>{" "}
+                  <span key={index}>
+                    {console.log(post)}
+                    {Emojify(post.categories)} {post.title}
+                  </span>{" "}
                 </Link>
               </td>
               <td className="text-muted" style={{ textAlign: "right" }}>
