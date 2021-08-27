@@ -4,7 +4,6 @@ import AllPosts from "./components/AllPosts.js";
 import OnePost from "./components/OnePost.js";
 import Archive from "./components/Archive.js";
 import { NavBar } from "./components/NavBar.js";
-import { Container } from "reactstrap";
 
 function App() {
   return (

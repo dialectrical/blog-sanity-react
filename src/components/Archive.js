@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import sanityClient from "../client.js";
 import { ArchiveSort } from "./archiveSort";
-import { Jumbotron, Container, Row, Col, Spinner } from "reactstrap";
+import { Container, Row, Col, Spinner } from "reactstrap";
 
 export default function Archive() {
   const [allPostsData, setAllPosts] = useState(null);

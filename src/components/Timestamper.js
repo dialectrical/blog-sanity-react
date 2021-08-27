@@ -1,5 +1,3 @@
-import { React } from "react";
-
 export const Timestamp = timecode => {
   let timeToStamp = new Date(timecode);
   let day = timeToStamp.getUTCDate();
