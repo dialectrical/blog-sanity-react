@@ -55,7 +55,7 @@ export default function OnePost() {
         <Row>
           <p className="text-muted">
             Posted at {Timestamp(postData.publishedAt)} to{" "}
-            {postData.categories.title}
+            {postData.Catgories ? postData.categories.title : "unsorted"}
           </p>
         </Row>
         <Row>
